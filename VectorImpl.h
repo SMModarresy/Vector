@@ -33,6 +33,9 @@ Vector<T>::Vector(Vector&& v) : real_size(v.real_size), array_size(v.array_size)
 
 template<typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& v) {
+    if(this == &v) {
+        return *this;
+    }
     delete[] items;
     real_size = v.real_size;
     array_size = v.array_size;
