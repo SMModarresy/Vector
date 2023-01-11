@@ -1,25 +1,20 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.16)
 project(Vector)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Vector Vector.cpp Vector.h VectorTest.cc VectorImpl.h)
+add_executable(Vector Vector.h VectorImpl.h Vector.cpp VectorTest.cc)
 
-include(FetchContent)
-FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/15460959cbbfa20e66ef0b5ab497367e47fc0a04.zip
-)
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
 
 enable_testing()
 
 target_link_libraries(
     Vector
-    GTest::gtest_main
+    ${GTEST_LIBRARIES}
+    gtest_main
+    pthread
 )
 
-include(GoogleTest)
 gtest_discover_tests(Vector)
