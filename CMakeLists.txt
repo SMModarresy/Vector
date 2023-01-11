@@ -3,6 +3,8 @@ project(Vector)
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer -g")
+
 add_executable(Vector Vector.h VectorImpl.h Vector.cpp VectorTest.cc)
 
 find_package(GTest REQUIRED)
