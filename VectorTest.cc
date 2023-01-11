@@ -140,6 +140,19 @@ TEST(VectorTest, AssignAssertions) {
     EXPECT_EQ(v2[2], 3);
 }
 
+TEST(VectorTest, SelfAssignAssertions) {
+    Vector<int> v(2, 2);
+
+    v.push_back(3);
+
+    v = v;
+
+    EXPECT_EQ(v.size(), 3);
+    EXPECT_EQ(v[0], 2);
+    EXPECT_EQ(v[1], 2);
+    EXPECT_EQ(v[2], 3);
+}
+
 TEST(VectorTest, AssignNoRefAssertions) {
     Vector<int> v1(2, 2), v2;
 
