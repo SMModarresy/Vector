@@ -33,6 +33,7 @@ Vector<T>::Vector(Vector&& v) : real_size(v.real_size), array_size(v.array_size)
 
 template<typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& v) {
+    delete[] items;
     real_size = v.real_size;
     array_size = v.array_size;
     items = new T[array_size];
@@ -118,6 +119,11 @@ const T& Vector<T>::operator[](const uint i) const {
 template<typename T>
 size_t Vector<T>::size() const {
     return real_size;
+}
+
+template<typename T>
+Vector<T>::~Vector() {
+    delete[] items;
 }
 
 #endif //VECTOR_VECTORIMPL_H

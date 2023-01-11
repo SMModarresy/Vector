@@ -28,6 +28,8 @@ public:
     T& operator[](const uint i);
     const T& operator[](const uint i) const;
     size_t size() const;
+
+    ~Vector();
 private:
     T* items;
     size_t array_size;
