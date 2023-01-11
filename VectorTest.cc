@@ -154,7 +154,7 @@ TEST(VectorTest, AssignNoRefAssertions) {
 }
 
 TEST(VectorTest, OutOfRangeAssertions) {
-    Vector<int> v1, v2, v3(2, 2), v4, v5(2, 2);
+    Vector<int> v1, v2, v3(2, 2), v4, v5(2);
 
     v1.push_back(1);
     v1.push_back(1);
@@ -171,5 +171,6 @@ TEST(VectorTest, OutOfRangeAssertions) {
     EXPECT_NO_THROW(v3[0]);
     EXPECT_THROW(v3[1], out_of_range);
     EXPECT_THROW(v4[0], out_of_range);
+    EXPECT_NO_THROW(v5[1]);
     EXPECT_THROW(v5[2], out_of_range);
 }
