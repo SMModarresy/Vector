@@ -166,6 +166,16 @@ TEST(VectorTest, AssignNoRefAssertions) {
     EXPECT_EQ(v2[2], 3);
 }
 
+TEST(VectorTest, AssignCellAssertions) {
+    Vector<int> v(2, 2);
+
+    v[1] = 3;
+
+    EXPECT_EQ(v.size(), 2);
+    EXPECT_EQ(v[0], 2);
+    EXPECT_EQ(v[1], 3);
+}
+
 TEST(VectorTest, OutOfRangeAssertions) {
     Vector<int> v1, v2, v3(2, 2), v4, v5(2);
 
